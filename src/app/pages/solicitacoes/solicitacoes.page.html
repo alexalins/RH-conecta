@@ -10,7 +10,7 @@
   <ion-list>
 
     <ion-item-sliding *ngFor="let solicitacao of solicitacoes">
-      <ion-item>
+      <ion-item (click)="showModalGet(solicitacao)">
         <ion-label>
             <h2>{{solicitacao.name}} - Status: {{solicitacao.status}}</h2>
             <p>Inicio: {{solicitacao.startTime}} - Encerrada: {{solicitacao.endTime}}</p>

@@ -9,6 +9,7 @@ import { SolicitacoesPage } from './solicitacoes.page';
 import { HeaderModule } from 'src/app/shared/components/header/header.module';
 import { ListModule } from 'src/app/shared/components/list/list.module';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { ModalGetComponent } from 'src/app/shared/components/modal-get/modal-get.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
     HeaderModule,
     ListModule,
   ],
-  declarations: [SolicitacoesPage, ModalComponent],
-  entryComponents: [ModalComponent]
+  declarations: [SolicitacoesPage, ModalComponent, ModalGetComponent],
+  entryComponents: [ModalComponent, ModalGetComponent]
 })
 export class SolicitacoesPageModule {}

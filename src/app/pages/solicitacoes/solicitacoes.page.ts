@@ -3,6 +3,7 @@ import { SolicitacaoService } from 'src/app/shared/service/solicitacao.service';
 import { Reembolso } from 'src/app/shared/models/reembolso';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { ModalGetComponent } from 'src/app/shared/components/modal-get/modal-get.component';
 
 @Component({
   selector: 'app-solicitacoes',
@@ -53,7 +54,18 @@ export class SolicitacoesPage implements OnInit {
       component: ModalComponent,
       componentProps: {solicitacao: this.solicitacao, isSave: isSave}
     });
-    modal.onDidDismiss().then((data) => this.getAll());
+    modal.onDidDismiss().then((data) => {
+      this.getAll();
+      this.solicitacao = new Reembolso();
+    });
     modal.present();
+  }
+
+  async showModalGet(solicitacaoGet: Reembolso) {
+    const modalGet = await this.modalController.create({
+      component: ModalGetComponent,
+      componentProps: {solicitacao: solicitacaoGet}
+    });
+    modalGet.present();
   }
 }
