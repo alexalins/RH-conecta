@@ -32,12 +32,12 @@
       </ion-datetime>
     </ion-item>
     <div class="ion-text-center">
-      <ion-button color="success" *ngIf="isSave; else edit" (click)="save()">Salvar</ion-button>
+      <ion-button color="primary" *ngIf="isSave; else edit" (click)="save()">Salvar</ion-button>
     </div>
 
     <ng-template #edit>
       <div class="ion-text-center">
-      <ion-button color="success" (click)="update()">Atualizar</ion-button>
+      <ion-button color="primary" (click)="update()">Atualizar</ion-button>
     </div>
     </ng-template>
   </form>
