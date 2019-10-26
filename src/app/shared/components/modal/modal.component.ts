@@ -30,6 +30,7 @@ export class ModalComponent implements OnInit {
     if(this.solicitacao) {
       this.solicitacaoService.save(this.solicitacao);
       this.clear();
+      this.close();
     }
   }
 
