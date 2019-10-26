@@ -1,0 +1,39 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Modal Solicitação</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+
+    <ion-item>
+      <ion-label>Id:</ion-label>
+      <ion-input name="id" [(ngModel)]="solicitacao.id" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Name:</ion-label>
+      <ion-input name="name" [(ngModel)]="solicitacao.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Status:</ion-label>
+      <ion-input name="status" [(ngModel)]="solicitacao.status" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start Time:</ion-label>
+      <ion-input name="startTime" [(ngModel)]="solicitacao.startTime" type="date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Time:</ion-label>
+      <ion-input name="endTime" [(ngModel)]="solicitacao.endTime" type="date"></ion-input>
+    </ion-item>
+
+    <ion-button color="success" *ngIf="isSave; else edit" (click)="save()">Salvar</ion-button>
+    <ng-template #edit>
+        <ion-button color="success" (click)="update()">Atualizar</ion-button>
+    </ng-template>
+  </form>
+</ion-content>

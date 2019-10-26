@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitacaoService } from 'src/app/shared/service/solicitacao.service';
 import { Reembolso } from 'src/app/shared/models/reembolso';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-solicitacoes',
@@ -13,7 +15,8 @@ export class SolicitacoesPage implements OnInit {
   solicitacao: Reembolso = new Reembolso();
 
   constructor(
-    private solicitacaoService: SolicitacaoService
+    private solicitacaoService: SolicitacaoService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -30,13 +33,6 @@ export class SolicitacoesPage implements OnInit {
     }
   } 
 
-  save(solicitacao: Reembolso) {
-    if(solicitacao) {
-      this.solicitacaoService.save(solicitacao);
-      this.getAll();
-    }
-  }
-
   deleteAll(){ this.solicitacaoService.deleteAll()}
 
   deleteById(solicitacao: Reembolso) {
@@ -46,10 +42,11 @@ export class SolicitacoesPage implements OnInit {
     }
   } 
 
-  update(solicitacao: Reembolso) {
-    if(solicitacao) {
-      this.solicitacaoService.update(solicitacao);
-      this.getAll();
-    }
+  async showModal(isSave: boolean) {
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+      componentProps: {solicitacao: this.solicitacao, isSave: isSave}
+    });
+    modal.present();
   }
 }

@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { SolicitacoesPage } from './solicitacoes.page';
 import { HeaderModule } from 'src/app/shared/components/header/header.module';
 import { ListModule } from 'src/app/shared/components/list/list.module';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     HeaderModule,
-    ListModule
+    ListModule,
   ],
-  declarations: [SolicitacoesPage]
+  declarations: [SolicitacoesPage, ModalComponent],
+  entryComponents: [ModalComponent]
 })
 export class SolicitacoesPageModule {}
