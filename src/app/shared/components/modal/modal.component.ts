@@ -20,7 +20,6 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.isSave)
   }
 
   close() {
@@ -37,7 +36,7 @@ export class ModalComponent implements OnInit {
   update() {
     if(this.solicitacao) {
       this.solicitacaoService.update(this.solicitacao);
-      this.clear();
+      this.close();
     }
   }
 

@@ -9,7 +9,6 @@
 
 <ion-content>
   <form>
-
     <ion-item>
       <ion-label>Id:</ion-label>
       <ion-input name="id" [(ngModel)]="solicitacao.id" type="number"></ion-input>
@@ -24,16 +23,18 @@
     </ion-item>
     <ion-item>
       <ion-label>Start Time:</ion-label>
-      <ion-input name="startTime" [(ngModel)]="solicitacao.startTime" type="date"></ion-input>
+      <ion-datetime displayFormat="DD MM YY" placeholder="Select Date" name="startTime"
+        [(ngModel)]="solicitacao.startTime"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>End Time:</ion-label>
-      <ion-input name="endTime" [(ngModel)]="solicitacao.endTime" type="date"></ion-input>
+      <ion-datetime displayFormat="DD MM YY" placeholder="Select Date" name="endTime" [(ngModel)]="solicitacao.endTime">
+      </ion-datetime>
     </ion-item>
 
     <ion-button color="success" *ngIf="isSave; else edit" (click)="save()">Salvar</ion-button>
     <ng-template #edit>
-        <ion-button color="success" (click)="update()">Atualizar</ion-button>
+      <ion-button color="success" (click)="update()">Atualizar</ion-button>
     </ng-template>
   </form>
 </ion-content>

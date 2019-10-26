@@ -12,7 +12,7 @@ import { ModalComponent } from 'src/app/shared/components/modal/modal.component'
 export class SolicitacoesPage implements OnInit {
 
   solicitacoes: Reembolso[] = [];
-  solicitacao: Reembolso = new Reembolso();
+  solicitacao: Reembolso;
 
   constructor(
     private solicitacaoService: SolicitacaoService,
@@ -20,6 +20,7 @@ export class SolicitacoesPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.solicitacao = new Reembolso();
     this.getAll();
   }
 
@@ -41,6 +42,11 @@ export class SolicitacoesPage implements OnInit {
        this.getAll();
     }
   } 
+
+  udpate(solicitacao: Reembolso) {
+    this.solicitacao = solicitacao;
+    this.showModal(false);
+  }
 
   async showModal(isSave: boolean) {
     const modal = await this.modalController.create({
