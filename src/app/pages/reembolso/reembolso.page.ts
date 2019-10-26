@@ -23,8 +23,7 @@ export class ReembolsoPage implements OnInit {
     this.reembolsoService.getJSON().subscribe(
       res => {
         this.reembolsos = res;
-      },
-      error => alert("Não foi possível carregar os Reembolsos")
+      }
     )
   }
 }

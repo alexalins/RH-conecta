@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Reembolso } from '../models/reembolso';
+import { ToastController } from '@ionic/angular';
+import { toast } from '../components/toast/toast';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +10,13 @@ export class SolicitacaoService {
 
   solicitacoes: Reembolso[] = [];
 
-  constructor() { }
+  constructor(private toastController: ToastController) { }
 
   save (solicitacao: Reembolso) {
     this.solicitacoes = this.getAll();
     this.solicitacoes.push(solicitacao);
     sessionStorage.setItem("solicitacoes", JSON.stringify(this.solicitacoes));
-    alert("Salvo com sucesso!");
+    toast("Salvo com sucesso!", this.toastController);
   }
 
   getAll() {
@@ -36,7 +38,7 @@ export class SolicitacaoService {
 
   deleteAll() {
     sessionStorage.removeItem("solicitacoes");
-    alert("Deletados com sucesso!");
+    toast("Deletados com sucesso!", this.toastController);
   }
 
   delete(solicitacao: Reembolso) {
@@ -48,7 +50,7 @@ export class SolicitacaoService {
           if(value.id == solicitacao.id) {
             this.solicitacoes.splice(count, 1);
             sessionStorage.setItem("solicitacoes", JSON.stringify(this.solicitacoes));
-            alert("Deletado com sucesso!");
+            toast("Deletado com sucesso!", this.toastController);
           }
           count++;
         })
@@ -64,7 +66,7 @@ export class SolicitacaoService {
           solicitacao.status = solicitacaoEdit.status;
           solicitacao.startTime = solicitacaoEdit.startTime;
           solicitacao.endTime = solicitacaoEdit.endTime;
-          alert("Atualizado com sucesso!");
+          toast("Atualizado com sucesso!", this.toastController);
         }
       }
     )

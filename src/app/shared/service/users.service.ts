@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { toast } from '../components/toast/toast';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class UsersService {
   constructor(
     private http: HttpClient,
     private menuController: MenuController,
-
     private router: Router,
+    private toastController: ToastController
   ) { }
 
   login(user: User) {
@@ -29,11 +30,11 @@ export class UsersService {
               let jsonUser = JSON.stringify(res);
               sessionStorage.setItem('user', jsonUser);
               this.menuController.enable(true);
-              this.router.navigate(['reembolso'])
+              this.router.navigate(['solicitacoes'])
             }
           })
         if (count == 0) { 
-          alert("Não foi possível efetuar o login!");
+          toast("Não foi possível efetuar o login!", this.toastController);
         }
       });
   }
