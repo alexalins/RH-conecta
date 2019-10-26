@@ -31,10 +31,14 @@
       <ion-datetime displayFormat="DD MM YY" placeholder="Select Date" name="endTime" [(ngModel)]="solicitacao.endTime">
       </ion-datetime>
     </ion-item>
+    <div class="ion-text-center">
+      <ion-button color="success" *ngIf="isSave; else edit" (click)="save()">Salvar</ion-button>
+    </div>
 
-    <ion-button color="success" *ngIf="isSave; else edit" (click)="save()">Salvar</ion-button>
     <ng-template #edit>
+      <div class="ion-text-center">
       <ion-button color="success" (click)="update()">Atualizar</ion-button>
+    </div>
     </ng-template>
   </form>
 </ion-content>

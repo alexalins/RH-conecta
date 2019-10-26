@@ -1,16 +1,31 @@
 <ion-content>
-  <div class="form">
-    <h4>Bem vindo ao RH Conecta</h4>
-    <form (submit)="login()" [formGroup]="loginForm">
-      <ion-item>
-        <ion-label>Nome de Usuário</ion-label>
-        <ion-input formControlName="username" name="username" class="form-control"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Senha</ion-label>
-        <ion-input type="password" formControlName="password" name="password"  class="form-control"></ion-input>
-      </ion-item>
-      <ion-button type="submit" color="success" [disabled]="loginForm.invalid">Iniciar Sessão</ion-button>
-    </form>
-  </div>
+    <ion-img [src]="img"></ion-img>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <div class="ion-text-center"><h4>Bem vindo ao <ion-text color="warning shade">RH Conecta</ion-text></h4></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <form (submit)="login()" [formGroup]="loginForm">
+        <ion-col>
+          <ion-item>
+            <ion-label>Nome de Usuário</ion-label>
+            <ion-input formControlName="username" name="username" class="form-control"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Senha</ion-label>
+            <ion-input type="password" formControlName="password" name="password" class="form-control"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <div class="ion-text-center">
+               <ion-button type="submit" color="success" [disabled]="loginForm.invalid">Iniciar Sessão</ion-button>
+          </div>
+        </ion-col>
+      </form>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,4 +1,4 @@
-<app-header title="Minhas Solicitações"></app-header>
+<app-header></app-header>
 
 <ion-content>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -7,13 +7,16 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list>
+  <div class="ion-text-center">
+    <h4>Minhas Solicitações</h4>
+  </div>
 
+  <ion-list>
     <ion-item-sliding *ngFor="let solicitacao of solicitacoes">
       <ion-item (click)="showModalGet(solicitacao)">
         <ion-label>
-            <h2>{{solicitacao.name}} - Status: {{solicitacao.status}}</h2>
-            <p>Inicio: {{solicitacao.startTime}} - Encerrada: {{solicitacao.endTime}}</p>
+          <h2>Nome: {{solicitacao.name}} - Status: {{solicitacao.status}}</h2>
+          <p>Inicio: {{solicitacao.startTime}} - Encerrada: {{solicitacao.endTime}}</p>
         </ion-label>
       </ion-item>
 
@@ -29,5 +32,5 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-
+  
 </ion-content>

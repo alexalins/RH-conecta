@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
   activeMenu: string;
   loginForm: FormGroup;
   user: User;
+  img: String = './assets/img/indra.png'
 
   constructor(
     private menuController: MenuController,
