@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -21,17 +22,14 @@ export class AppComponent {
       url: '/reembolso',
       icon: 'card'
     },
-    {
-      title: 'Sair',
-      url: '/login',
-      icon: 'power'
-    }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    private menuController: MenuController,
   ) {
     this.initializeApp();
   }
@@ -41,5 +39,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logout() {
+    sessionStorage.removeItem('user');
+    this.menuController.enable(false);
+    this.router.navigate(['login'])
   }
 }

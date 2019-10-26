@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { UsersService } from 'src/app/shared/service/users.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +13,21 @@ export class LoginPage implements OnInit {
 
   activeMenu: string;
   loginForm: FormGroup;
+  user: User;
 
   constructor(
-    public menu: MenuController,
+    private menuController: MenuController,
     private usersService: UsersService,
     private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.menu.enable(false);
+    this.menuController.enable(false);
+    sessionStorage.removeItem('user');
+    this.form();
+  }
+
+  form() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -30,15 +35,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    const username = this.loginForm.get('username').value;
-    const password = this.loginForm.get('password').value;
-    //
-    this.usersService.login(username, password);
-    if(sessionStorage.getItem('user')) {
-      this.menu.enable(true);
-      this.router.navigate(['reembolso'])
-    } else {
-      alert("Não foi possivel efetuar o login!");
-    }
+    this.usersService.login(this.loginForm.value);
+    this.loginForm.reset();
   }
 }
