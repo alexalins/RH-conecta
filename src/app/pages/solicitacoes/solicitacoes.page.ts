@@ -53,6 +53,7 @@ export class SolicitacoesPage implements OnInit {
       component: ModalComponent,
       componentProps: {solicitacao: this.solicitacao, isSave: isSave}
     });
+    modal.onDidDismiss().then((data) => this.getAll());
     modal.present();
   }
 }

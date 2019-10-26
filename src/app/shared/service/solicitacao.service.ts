@@ -12,7 +12,6 @@ export class SolicitacaoService {
 
   save (solicitacao: Reembolso) {
     this.solicitacoes = this.getAll();
-    console.log(this.solicitacoes)
     this.solicitacoes.push(solicitacao);
     sessionStorage.setItem("solicitacoes", JSON.stringify(this.solicitacoes));
     alert("Salvo com sucesso!");
