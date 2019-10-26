@@ -22,16 +22,11 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuActive();
-
+    this.menu.enable(false);
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-  }
-
-  menuActive() {
-    this.menu.enable(false);
   }
 
   login() {
@@ -41,7 +36,7 @@ export class LoginPage implements OnInit {
     this.usersService.login(username, password);
     if(sessionStorage.getItem('user')) {
       this.menu.enable(true);
-      this.router.navigate(['solicitacoes'])
+      this.router.navigate(['reembolso'])
     } else {
       alert("Não foi possivel efetuar o login!");
     }
